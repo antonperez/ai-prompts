@@ -40,9 +40,11 @@ This library contains reusable prompts for implementing global Claude Code optim
 - **[examples/](03-custom-skills/examples/)** - Working examples
   - `example-simple-skill.md` - Simple single-action skill
   - `example-complex-skill.md` - Multi-action skill with integration
+  - **[module-mcp/](03-custom-skills/examples/module-mcp/)** - `/module:mcp` — Add a Laravel MCP server to any project (dual transport, domain tools, auth)
+  - **[module-assistant/](03-custom-skills/examples/module-assistant/)** - `/module:assistant` — Add an AI assistant chat panel (Livewire, PrismPHP tools, local agent support)
 
-**Use when**: You want custom commands like `/deploy` or `/migrate`
-**Benefit**: Encapsulate common workflows, reduce repetition
+**Use when**: You want custom commands like `/deploy` or `/migrate`, or full modules like `/module:mcp` and `/module:assistant`
+**Benefit**: Encapsulate common workflows, reduce repetition; module skills bootstrap entire features
 
 ### [04-research-integration](04-research-integration/)
 **Research and integrate new Claude API features**
@@ -500,13 +502,28 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
 ---
 
 **Created**: 2026-01-04
-**Last Updated**: 2026-02-14
-**Version**: 1.4.0
+**Last Updated**: 2026-02-15
+**Version**: 1.5.0
 **Compatibility**: Claude Code (all versions), Claude API (Opus 4.6, Sonnet 4.5, Haiku 4.5)
 
 ---
 
 ## 📝 Version History
+
+### v1.5.0 (2026-02-15)
+**Added**: Module Skills — reusable skills that bootstrap entire features on any Laravel project
+- `/module:mcp` (`03-custom-skills/examples/module-mcp/`) — Full MCP server implementation
+  - Domain analysis → tool scaffolding → implementation workflow
+  - Read/Write/Destructive tool patterns with proper annotations
+  - Dual transport (HTTP/SSE + stdio), auth bootstrap trait, global scope fix
+  - `analyze`, `add <domain>`, `sync` subcommands
+  - Based on Agent Fleet reference implementation (61 tools, 14 domains)
+- `/module:assistant` (`03-custom-skills/examples/module-assistant/`) — AI assistant chat panel
+  - Livewire panel with conversation history, context awareness, resizable sidebar
+  - PrismPHP tool registry with role-based access (read/write/destructive tiers)
+  - Three provider strategies: cloud (native tools), Claude Code (`<tool_call>` loop), Codex (MCP native)
+  - System prompt architecture with domain description, user context, and tool schemas
+  - Based on Agent Fleet reference implementation (streaming, optimistic UI, local agents)
 
 ### v1.4.0 (2026-02-14)
 **Added**: Desktop Development Section (12-desktop-development/)
