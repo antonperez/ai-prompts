@@ -15,13 +15,14 @@ The library follows a sequential learning path (01 through 12), where each direc
 - **03-custom-skills** - Skill authoring guide + template (YAML frontmatter + Markdown body, placed in `~/.claude/skills/<name>/SKILL.md`)
 - **04-research-integration** - Keeping docs current with Claude API changes
 - **05-token-optimization** - Token reduction techniques and measurement
-- **06-advanced-patterns** - Multi-agent coordination, checkpoint systems, constitutions, selective deep plan analysis
+- **06-advanced-patterns** - Multi-agent coordination, Agent Teams (v2.1.32+), checkpoint systems, constitutions, selective deep plan analysis, session observability
 - **07-custom-commands** - Ready-to-use slash commands (debug, i18n, qa, seo, deploy, refactor, perf)
 - **08-ui-ux-development** - UI/UX implementation workflow with browser testing via Chrome MCP
 - **09-laravel-mcp-integration** - Laravel Boost + LaraPlugins.io MCP setup, CLAUDE.md template for Laravel projects
 - **10-subagents** - Custom subagent creation (YAML frontmatter format with model/tools/mcpServers fields)
 - **11-mobile-development** - iOS, Android, React Native, Flutter guides with MCP servers, subagents, CLAUDE.md templates, and cross-platform skills
 - **12-desktop-development** - macOS, Tauri, Electron guides with MCP servers, subagents, CLAUDE.md templates, and cross-platform skills
+- **13-security-hardening** - MCP CVEs, vetting checklists, prompt injection defense hooks, production safety rules, permissions.deny templates
 
 ## Key Patterns
 

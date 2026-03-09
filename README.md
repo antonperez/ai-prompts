@@ -69,12 +69,14 @@ This library contains reusable prompts for implementing global Claude Code optim
 ### [06-advanced-patterns](06-advanced-patterns/)
 **Advanced techniques for complex scenarios**
 
-- **[parallel-agents-guide.md](06-advanced-patterns/parallel-agents-guide.md)** - Multi-agent coordination
+- **[parallel-agents-guide.md](06-advanced-patterns/parallel-agents-guide.md)** - Multi-agent coordination via Task tool
+- **[agent-teams-guide.md](06-advanced-patterns/agent-teams-guide.md)** - Native Agent Teams (v2.1.32+, Opus 4.6) — autonomous peer-to-peer coordination on shared codebases
 - **[checkpoint-system-guide.md](06-advanced-patterns/checkpoint-system-guide.md)** - Save/resume workflows
 - **[constitution-guide.md](06-advanced-patterns/constitution-guide.md)** - Architectural decision frameworks
+- **[observability-guide.md](06-advanced-patterns/observability-guide.md)** - Session monitoring, cost tracking, usage pattern analysis
 
-**Use when**: Complex projects, team coordination, critical decisions
-**Benefit**: Handle advanced scenarios with proven patterns
+**Use when**: Complex projects, team coordination, critical decisions, cost visibility
+**Benefit**: Handle advanced scenarios with proven patterns; understand where tokens go
 
 ### [07-custom-commands](07-custom-commands/)
 **Custom slash commands for specialized workflows**
@@ -149,6 +151,23 @@ This library contains reusable prompts for implementing global Claude Code optim
 **Use when**: Developing iOS (Swift/SwiftUI), Android (Kotlin/Compose), React Native, or Flutter apps
 **Benefit**: Platform-specific MCP integration, build/test automation, device control
 **Setup**: 5-10 minutes per platform (MCP installation + CLAUDE.md template)
+
+### [13-security-hardening](13-security-hardening/)
+**Protect Claude Code workflows from MCP attacks, prompt injection, and accidental data loss**
+
+- **[guide.md](13-security-hardening/guide.md)** - Complete security hardening guide
+  - MCP vetting checklist + community-vetted safe list
+  - Known CVEs (2025-2026) with versions and mitigations
+  - Prompt injection defense hooks (PreToolUse + PostToolUse)
+  - 6 production safety rules with `settings.json` + hook implementations
+  - `permissions.deny` hardening templates (global + project-level)
+  - Agent Skills supply chain risks and scanning
+
+**Use when**: Team environments, production codebases, regulated industries, before adding new MCP servers
+**Benefit**: Prevent data exfiltration, block destructive operations, audit MCP supply chain
+**Time**: 15-30 minutes for initial hardening; 5 minutes per new MCP added
+
+---
 
 ### [12-desktop-development](12-desktop-development/)
 **Desktop development with Claude Code for macOS, Tauri, and Electron**
@@ -404,6 +423,7 @@ git push -u origin main
 - [Awesome Claude Code Subagents](https://github.com/VoltAgent/awesome-claude-code-subagents)
 - [Claude Code Cheat Sheet](https://github.com/Njengah/claude-code-cheat-sheet)
 - [Awesome LLM Apps](https://github.com/Shubhamsaboo/awesome-llm-apps) - 95K+ star collection of LLM agent implementations; see [`awesome_agent_skills/`](https://github.com/Shubhamsaboo/awesome-llm-apps/tree/main/awesome_agent_skills) for 18 SKILL.md-format skills and multi-agent team patterns
+- [Claude Code Ultimate Guide](https://github.com/FlorianBruniaux/claude-code-ultimate-guide) - Comprehensive reference covering methodologies, security CVEs, observability, and production patterns
 
 ### Laravel MCP Ecosystem
 - [Laravel Boost](https://laravel.com/ai/mcp) - Official Laravel MCP server
@@ -502,13 +522,40 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
 ---
 
 **Created**: 2026-01-04
-**Last Updated**: 2026-02-15
-**Version**: 1.5.0
-**Compatibility**: Claude Code (all versions), Claude API (Opus 4.6, Sonnet 4.5, Haiku 4.5)
+**Last Updated**: 2026-03-09
+**Version**: 1.6.0
+**Compatibility**: Claude Code v2.1.32+, Claude API (Opus 4.6, Sonnet 4.5, Haiku 4.5)
 
 ---
 
 ## 📝 Version History
+
+### v1.6.0 (2026-03-09)
+**Added**: Security Hardening Section (13-security-hardening/)
+- MCP vetting workflow with 5-minute audit checklist
+- Known CVEs (2025-2026) table with affected versions and patches
+- Prompt injection defense hooks (PreToolUse + PostToolUse)
+- 6 production safety rules with `settings.json` deny rules and hook implementations
+- `permissions.deny` hardening templates (global `~/.claude/` + per-project)
+- Agent Skills supply chain risk data (36.8% of public skills have security flaws)
+- Incident response playbook
+
+**Added**: Agent Teams Guide (06-advanced-patterns/agent-teams-guide.md)
+- Native experimental feature (v2.1.32+, Opus 4.6, `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`)
+- Architecture: peer-to-peer messaging, git-based locking, isolated 1M-token contexts per agent
+- Decision matrix: Agent Teams vs Parallel Agents vs Dual-Instance vs Multi-Instance
+- 4 copy-paste patterns: pre-release review, security PR review, multi-file doc update, parallel refactor
+- Limitations, red flags, and anti-patterns
+
+**Added**: Observability Guide (06-advanced-patterns/observability-guide.md)
+- Session search script (`cs`) — zero-dependency bash, ~15ms for recent sessions
+- Community tools comparison (session-search.sh vs claude-conversation-extractor vs ran CLI)
+- Cost tracking scripts: per-session and weekly reports
+- Usage pattern analysis: most-read files, tool distribution
+- Team visibility: aggregate usage across developers
+- Cross-folder session migration guide
+
+**Updated**: README.md community resources, compatibility to Claude Code v2.1.32+
 
 ### v1.5.0 (2026-02-15)
 **Added**: Module Skills — reusable skills that bootstrap entire features on any Laravel project
