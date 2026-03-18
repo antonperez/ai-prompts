@@ -14,6 +14,15 @@ This library contains reusable prompts for implementing global Claude Code optim
 - **[guide.md](01-global-optimization/guide.md)** - Step-by-step installation guide
 - **[setup-agent.md](01-global-optimization/setup-agent.md)** - Executable agent for automated setup
 - **[checklist.md](01-global-optimization/checklist.md)** - Verification checklist
+- **[skills/](01-global-optimization/skills/)** - Complete SKILL.md files for all 5 global skills
+  - [`optimize/`](01-global-optimization/skills/optimize/SKILL.md) - `/optimize` — max token efficiency mode
+  - [`context/`](01-global-optimization/skills/context/SKILL.md) - `/context` — memory management
+  - [`cache-inspector/`](01-global-optimization/skills/cache-inspector/SKILL.md) - `/cache-inspector` — cache monitoring
+  - [`update-docs/`](01-global-optimization/skills/update-docs/SKILL.md) - `/update-docs` — documentation refresh
+  - [`init-project/`](01-global-optimization/skills/init-project/SKILL.md) - `/init-project` — new project setup
+- **[system-prompts/](01-global-optimization/system-prompts/)** - Global system prompt files
+  - [`global-optimization.md`](01-global-optimization/system-prompts/global-optimization.md) - Core optimization rules
+  - [`symbol-first-protocol.md`](01-global-optimization/system-prompts/symbol-first-protocol.md) - Symbol-first exploration protocol
 
 **Time**: 2-3 hours (one-time)
 **Benefit**: 70-90% token reduction on ALL future projects
@@ -40,6 +49,7 @@ This library contains reusable prompts for implementing global Claude Code optim
 - **[examples/](03-custom-skills/examples/)** - Working examples
   - `example-simple-skill.md` - Simple single-action skill
   - `example-complex-skill.md` - Multi-action skill with integration
+  - `pwa.md` - PWA features skill (service worker, manifest, offline, push notifications)
   - **[module-mcp/](03-custom-skills/examples/module-mcp/)** - `/module:mcp` — Add a Laravel MCP server to any project (dual transport, domain tools, auth)
   - **[module-assistant/](03-custom-skills/examples/module-assistant/)** - `/module:assistant` — Add an AI assistant chat panel (Livewire, PrismPHP tools, local agent support)
 
@@ -152,6 +162,22 @@ This library contains reusable prompts for implementing global Claude Code optim
 **Benefit**: Platform-specific MCP integration, build/test automation, device control
 **Setup**: 5-10 minutes per platform (MCP installation + CLAUDE.md template)
 
+### [12-desktop-development](12-desktop-development/)
+**Desktop development with Claude Code for macOS, Tauri, and Electron**
+
+- **[README.md](12-desktop-development/README.md)** - Platform comparison and quick start
+- **[setup-guide.md](12-desktop-development/setup-guide.md)** - MCP server installation for all platforms
+- **macOS**: [guide](12-desktop-development/macos/macos-guide.md) | [subagent](12-desktop-development/macos/macos-subagent.md) | [CLAUDE.md template](12-desktop-development/macos/macos-claude-md-template.md)
+- **Tauri**: [guide](12-desktop-development/tauri/tauri-guide.md) | [subagent](12-desktop-development/tauri/tauri-subagent.md) | [CLAUDE.md template](12-desktop-development/tauri/tauri-claude-md-template.md)
+- **Electron**: [guide](12-desktop-development/electron/electron-guide.md) | [subagent](12-desktop-development/electron/electron-subagent.md) | [CLAUDE.md template](12-desktop-development/electron/electron-claude-md-template.md)
+- **Skills**: [/desktop-build](12-desktop-development/skills/desktop-build.md) | [/desktop-test](12-desktop-development/skills/desktop-test.md)
+
+**Use when**: Building macOS native (SwiftUI/AppKit), Tauri (Rust + Web), or Electron (Node.js + Chromium) desktop apps
+**Benefit**: Platform-specific MCP integration, build/package automation, code signing and notarization workflows
+**Setup**: 5-10 minutes per platform (MCP installation + CLAUDE.md template)
+
+---
+
 ### [13-security-hardening](13-security-hardening/)
 **Protect Claude Code workflows from MCP attacks, prompt injection, and accidental data loss**
 
@@ -166,22 +192,6 @@ This library contains reusable prompts for implementing global Claude Code optim
 **Use when**: Team environments, production codebases, regulated industries, before adding new MCP servers
 **Benefit**: Prevent data exfiltration, block destructive operations, audit MCP supply chain
 **Time**: 15-30 minutes for initial hardening; 5 minutes per new MCP added
-
----
-
-### [12-desktop-development](12-desktop-development/)
-**Desktop development with Claude Code for macOS, Tauri, and Electron**
-
-- **[README.md](12-desktop-development/README.md)** - Platform comparison and quick start
-- **[setup-guide.md](12-desktop-development/setup-guide.md)** - MCP server installation for all platforms
-- **macOS**: [guide](12-desktop-development/macos/macos-guide.md) | [subagent](12-desktop-development/macos/macos-subagent.md) | [CLAUDE.md template](12-desktop-development/macos/macos-claude-md-template.md)
-- **Tauri**: [guide](12-desktop-development/tauri/tauri-guide.md) | [subagent](12-desktop-development/tauri/tauri-subagent.md) | [CLAUDE.md template](12-desktop-development/tauri/tauri-claude-md-template.md)
-- **Electron**: [guide](12-desktop-development/electron/electron-guide.md) | [subagent](12-desktop-development/electron/electron-subagent.md) | [CLAUDE.md template](12-desktop-development/electron/electron-claude-md-template.md)
-- **Skills**: [/desktop-build](12-desktop-development/skills/desktop-build.md) | [/desktop-test](12-desktop-development/skills/desktop-test.md)
-
-**Use when**: Building macOS native (SwiftUI/AppKit), Tauri (Rust + Web), or Electron (Node.js + Chromium) desktop apps
-**Benefit**: Platform-specific MCP integration, build/package automation, code signing and notarization workflows
-**Setup**: 5-10 minutes per platform (MCP installation + CLAUDE.md template)
 
 ---
 
@@ -522,9 +532,9 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
 ---
 
 **Created**: 2026-01-04
-**Last Updated**: 2026-03-09
-**Version**: 1.6.0
-**Compatibility**: Claude Code v2.1.32+, Claude API (Opus 4.6, Sonnet 4.5, Haiku 4.5)
+**Last Updated**: 2026-03-18
+**Version**: 1.7.0
+**Compatibility**: Claude Code v2.1.32+, Claude API (Opus 4.6: `claude-opus-4-6`, Sonnet 4.6: `claude-sonnet-4-6`, Haiku 4.5: `claude-haiku-4-5-20251001`)
 
 ---
 
@@ -571,6 +581,24 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
   - Three provider strategies: cloud (native tools), Claude Code (`<tool_call>` loop), Codex (MCP native)
   - System prompt architecture with domain description, user context, and tool schemas
   - Based on Agent Fleet reference implementation (streaming, optimistic UI, local agents)
+
+### v1.7.0 (2026-03-18)
+**Fixed**: Critical content gaps in `01-global-optimization/` (reported in issue #1)
+
+**Added**: Complete SKILL.md files for all 5 global skills (previously placeholder text):
+- `/optimize` — task complexity analysis, planning strategy selection, model routing, metrics reporting
+- `/context` — full memory management (load, save, refresh, list, inspect, clear) with token savings docs
+- `/cache-inspector` — cache hit rate analysis, cost breakdown, optimization recommendations
+- `/update-docs` — web research + doc comparison + targeted update workflow
+- `/init-project` — full stack detection, constitution generation, memory creation, per-framework support
+
+**Added**: Complete system prompt files (previously placeholder text):
+- `global-optimization.md` — all mandatory/automatic optimization rules ready to copy to `~/.claude/`
+- `symbol-first-protocol.md` — complete symbol-first protocol with patterns, examples, token savings table
+
+**Fixed**: `setup-agent.md` no longer has circular references — now points to actual files in repo
+**Fixed**: `03-custom-skills/guide.md` now references `pwa.md` example
+**Fixed**: `04-research-integration/guide.md` now links to `sources.md`
 
 ### v1.4.0 (2026-02-14)
 **Added**: Desktop Development Section (12-desktop-development/)

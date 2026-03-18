@@ -1,7 +1,7 @@
 ---
 name: research-agent
 description: Automated research agent for Claude API updates and optimization techniques
-model: claude-sonnet-4-5-20250929
+model: claude-sonnet-4-6
 version: 1.0.0
 ---
 

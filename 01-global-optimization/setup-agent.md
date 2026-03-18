@@ -1,7 +1,7 @@
 ---
 name: global-optimization-setup
 description: Automated global Claude Code optimization setup agent
-model: claude-sonnet-4-5-20250929
+model: claude-sonnet-4-6
 version: 1.0.0
 ---
 
@@ -47,92 +47,94 @@ mkdir -p ~/.claude/{agents,settings,skills/{optimize,context,cache-inspector,upd
 
 ### Phase 2: Create PM Orchestrator
 
-Write `~/.claude/agents/pm-orchestrator.md` with complete agent definition including:
-- Adaptive planning strategies (Unified, Intent-Planning, Planning-Only)
-- Context preparation (load memories, symbolic discovery, constitution check)
-- Agent selection with model strategy
-- Continuous learning system
-- Session summary template
-
-*[Copy complete content from your existing ~/.claude/agents/pm-orchestrator.md or reference the plan file]*
+Write `~/.claude/agents/pm-orchestrator.md` with the complete content from `guide.md` Step 2 (the full `pm-orchestrator.md` content block is included there). Copy exactly — it includes adaptive planning strategies, model selection, context preparation, and session summary templates.
 
 ### Phase 3: Create Global Settings (4 JSON files)
 
-#### File 1: prompt-caching.json
-90% cost savings on cached content reads
+The complete JSON content for all 4 files is in `guide.md` Steps 3.1–3.4. Copy each block verbatim:
 
-*[Copy ~/.claude/settings/prompt-caching.json]*
+#### File 1: `~/.claude/settings/prompt-caching.json`
+See guide.md Step 3.1 — configures ephemeral cache with 60-min TTL for system prompts, memories, tool definitions.
 
-#### File 2: beta-features.json
-14-70% savings with token-efficient tools
+#### File 2: `~/.claude/settings/beta-features.json`
+See guide.md Step 3.2 — enables `token-efficient-tools-2025-02-19` beta header (14-70% tool output reduction).
 
-*[Copy ~/.claude/settings/beta-features.json]*
+#### File 3: `~/.claude/settings/model-strategy.json`
+See guide.md Step 3.3 — maps agent types to Haiku/Sonnet/Opus with cost targets.
 
-#### File 3: model-strategy.json
-60% cost savings via Haiku/Sonnet/Opus selection
-
-*[Copy ~/.claude/settings/model-strategy.json]*
-
-#### File 4: token-optimization.json
-Orchestrates all optimization strategies
-
-*[Copy ~/.claude/settings/token-optimization.json]*
+#### File 4: `~/.claude/settings/token-optimization.json`
+See guide.md Step 3.4 — orchestrates all optimization strategies with enforcement rules.
 
 ### Phase 4: Create Global Skills (5 SKILL.md files)
 
-#### Skill 1: /optimize
-Maximum token efficiency mode
+All 5 skill files are in the `skills/` subdirectory next to this file. Copy each one:
 
-*[Copy ~/.claude/skills/optimize/SKILL.md]*
+#### Skill 1: `/optimize`
+```bash
+cp -r ~/ai-prompts/01-global-optimization/skills/optimize ~/.claude/skills/
+```
+Source: [`skills/optimize/SKILL.md`](skills/optimize/SKILL.md)
 
-#### Skill 2: /context
-Memory management (load, save, list, refresh, inspect, clear)
+#### Skill 2: `/context`
+```bash
+cp -r ~/ai-prompts/01-global-optimization/skills/context ~/.claude/skills/
+```
+Source: [`skills/context/SKILL.md`](skills/context/SKILL.md)
 
-*[Copy ~/.claude/skills/context/SKILL.md]*
+#### Skill 3: `/cache-inspector`
+```bash
+cp -r ~/ai-prompts/01-global-optimization/skills/cache-inspector ~/.claude/skills/
+```
+Source: [`skills/cache-inspector/SKILL.md`](skills/cache-inspector/SKILL.md)
 
-#### Skill 3: /cache-inspector
-Cache performance monitoring and optimization
+#### Skill 4: `/update-docs`
+```bash
+cp -r ~/ai-prompts/01-global-optimization/skills/update-docs ~/.claude/skills/
+```
+Source: [`skills/update-docs/SKILL.md`](skills/update-docs/SKILL.md)
 
-*[Copy ~/.claude/skills/cache-inspector/SKILL.md]*
+#### Skill 5: `/init-project`
+```bash
+cp -r ~/ai-prompts/01-global-optimization/skills/init-project ~/.claude/skills/
+```
+Source: [`skills/init-project/SKILL.md`](skills/init-project/SKILL.md)
 
-#### Skill 4: /update-docs
-Update documentation from web research
-
-*[Copy ~/.claude/skills/update-docs/SKILL.md]*
-
-#### Skill 5: /init-project
-Initialize best practices for current directory
-
-*[Copy ~/.claude/skills/init-project/SKILL.md]*
+**Or copy all at once**:
+```bash
+cp -r ~/ai-prompts/01-global-optimization/skills/* ~/.claude/skills/
+```
 
 ### Phase 5: Create System Prompts (2 files)
 
-#### Prompt 1: global-optimization.md
-Core optimization principles applied to all projects/agents
+Both system prompt files are in the `system-prompts/` subdirectory. Copy the content section (below the `---` divider) from each file:
 
-*[Copy ~/.claude/system-prompts/global-optimization.md]*
+#### Prompt 1: `~/.claude/system-prompts/global-optimization.md`
+```bash
+# Extract just the system prompt content (skip the header/instructions)
+tail -n +$(grep -n "^---$" ~/ai-prompts/01-global-optimization/system-prompts/global-optimization.md | tail -1 | cut -d: -f1) \
+  ~/ai-prompts/01-global-optimization/system-prompts/global-optimization.md \
+  > ~/.claude/system-prompts/global-optimization.md
+```
+Or open [`system-prompts/global-optimization.md`](system-prompts/global-optimization.md) and copy the content after the second `---` divider.
 
-#### Prompt 2: symbol-first-protocol.md
-65-75% savings via Serena symbolic tools
-
-*[Copy ~/.claude/system-prompts/symbol-first-protocol.md]*
+#### Prompt 2: `~/.claude/system-prompts/symbol-first-protocol.md`
+```bash
+tail -n +$(grep -n "^---$" ~/ai-prompts/01-global-optimization/system-prompts/symbol-first-protocol.md | tail -1 | cut -d: -f1) \
+  ~/ai-prompts/01-global-optimization/system-prompts/symbol-first-protocol.md \
+  > ~/.claude/system-prompts/symbol-first-protocol.md
+```
+Or open [`system-prompts/symbol-first-protocol.md`](system-prompts/symbol-first-protocol.md) and copy the content after the second `---` divider.
 
 ### Phase 6: Create Documentation (3 files)
 
-#### Doc 1: README.md
-Complete guide to global optimization system
+#### Doc 1: `~/.claude/README.md`
+Create a README documenting your global setup. See guide.md Step 6.1 for recommended sections.
 
-*[Copy ~/.claude/README.md]*
+#### Doc 2: `~/.claude/INSTALLATION-COMPLETE.md`
+Create an installation checklist. See guide.md Step 6.2 for recommended sections.
 
-#### Doc 2: INSTALLATION-COMPLETE.md
-Installation summary and next steps
-
-*[Copy ~/.claude/INSTALLATION-COMPLETE.md]*
-
-#### Doc 3: QUICK-REFERENCE.md
-Quick reference card for commands and workflows
-
-*[Create as specified in guide.md]*
+#### Doc 3: `~/.claude/QUICK-REFERENCE.md`
+The complete QUICK-REFERENCE content is in guide.md Step 6.3 — copy the code block verbatim.
 
 ---
 

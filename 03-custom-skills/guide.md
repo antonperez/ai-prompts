@@ -119,7 +119,7 @@ Optional fields:
 name: skill-name
 description: Brief description
 version: 1.0.0
-model: claude-sonnet-4-5-20250929    # Preferred model
+model: claude-sonnet-4-6    # Preferred model
 author: Your Name                     # Attribution
 tags: [deployment, docker, ci]        # Categorization
 requires: [serena, docker]            # Dependencies
@@ -715,6 +715,19 @@ See `examples/example-simple-skill.md` for a complete simple skill.
 
 See `examples/example-complex-skill.md` for a complete complex skill.
 
+### Example 3: PWA Features Skill
+
+See `examples/pwa.md` for a real-world skill that analyzes a project and adds Progressive Web App capabilities (service worker, manifest, offline support, push notifications).
+
+### Example 4: Global Optimization Skills
+
+The 5 global skills in `../01-global-optimization/skills/` are production-ready examples:
+- [`/optimize`](../01-global-optimization/skills/optimize/SKILL.md) — multi-action skill with strategy selection
+- [`/context`](../01-global-optimization/skills/context/SKILL.md) — stateful memory management
+- [`/cache-inspector`](../01-global-optimization/skills/cache-inspector/SKILL.md) — reporting and analysis skill
+- [`/update-docs`](../01-global-optimization/skills/update-docs/SKILL.md) — web research + file update workflow
+- [`/init-project`](../01-global-optimization/skills/init-project/SKILL.md) — multi-step project initialization
+
 ---
 
 ## Troubleshooting
@@ -794,7 +807,7 @@ See `examples/example-complex-skill.md` for a complete complex skill.
 name: skill-name
 description: Brief description
 version: 1.0.0
-model: claude-sonnet-4-5-20250929
+model: claude-sonnet-4-6
 author: Your Name
 tags: [category1, category2]
 requires: [serena, docker, gh]

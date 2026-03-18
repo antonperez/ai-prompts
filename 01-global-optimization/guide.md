@@ -139,7 +139,7 @@ Open `~/.claude/agents/pm-orchestrator.md` in your text editor and paste:
 ---
 name: pm-orchestrator
 description: Central project management coordinator with adaptive planning and token optimization
-model: claude-sonnet-4-5-20250929
+model: claude-sonnet-4-6
 version: 1.0.0
 ---
 
@@ -521,7 +521,7 @@ Create 4 JSON configuration files in `~/.claude/settings/`.
 {
   "version": "1.0.0",
   "description": "Model selection strategy for cost optimization",
-  "default_model": "claude-sonnet-4-5-20250929",
+  "default_model": "claude-sonnet-4-6",
   "models": {
     "haiku": {
       "id": "claude-haiku-4-5",
@@ -539,7 +539,7 @@ Create 4 JSON configuration files in `~/.claude/settings/`.
       "cost_savings_vs_sonnet": "60%"
     },
     "sonnet": {
-      "id": "claude-sonnet-4-5-20250929",
+      "id": "claude-sonnet-4-6",
       "cost_per_million": {
         "input": 3,
         "output": 15
@@ -555,7 +555,7 @@ Create 4 JSON configuration files in `~/.claude/settings/`.
       "default": true
     },
     "opus": {
-      "id": "claude-opus-4-5-20251101",
+      "id": "claude-opus-4-6",
       "cost_per_million": {
         "input": 5,
         "output": 25
@@ -748,67 +748,67 @@ Create 5 slash command skills. Due to length, I'll show the structure for each:
 
 **File**: `~/.claude/skills/optimize/SKILL.md`
 
-*[See setup-agent.md for complete content or copy from existing global installation]*
+**Source**: Copy from [`skills/optimize/SKILL.md`](skills/optimize/SKILL.md) in this directory.
 
 **Key features**:
-- Maximum token efficiency mode
-- Strict optimization enforcement
-- Detailed metrics reporting
-- Examples for simple, medium, complex tasks
+- Analyzes task complexity and routes to the correct planning strategy (Unified / Intent-Planning / Planning-Only)
+- Enforces symbol-first exploration and memory loading
+- Selects the cheapest model that produces acceptable quality
+- Reports token savings at the end of each session
 
 ### 4.2 `/context` Skill
 
 **File**: `~/.claude/skills/context/SKILL.md`
 
-*[See setup-agent.md for complete content]*
+**Source**: Copy from [`skills/context/SKILL.md`](skills/context/SKILL.md) in this directory.
 
 **Actions**:
-- load - Load all relevant memories
-- save [name] - Create new memory
-- list - Show available memories
-- refresh [name] - Update stale memory
-- inspect - Show loaded context + cache status
-- clear - Clear loaded context
+- `load` — Load all relevant memories for the current project
+- `save [name]` — Create or update a named memory
+- `list` — Show all available memories with timestamps
+- `refresh [name]` — Regenerate a stale memory from the current codebase
+- `inspect` — Show loaded context + cache hit rate
+- `clear` — Unload all memories from context
 
 ### 4.3 `/cache-inspector` Skill
 
 **File**: `~/.claude/skills/cache-inspector/SKILL.md`
 
-*[See setup-agent.md for complete content]*
+**Source**: Copy from [`skills/cache-inspector/SKILL.md`](skills/cache-inspector/SKILL.md) in this directory.
 
 **Actions**:
-- status - Current cache status
-- analyze - Performance analysis
-- optimize - Get recommendations
-- report - Detailed report
-- clear - Clear cache (testing)
+- `status` — Current cache entries, hit rate, and estimated savings
+- `analyze` — Performance trends and cost breakdown
+- `optimize` — Actionable recommendations to improve hit rate
+- `report` — Full report saved to `.claude/learnings/cache-performance.md`
+- `clear` — Clear cache entries (for testing only)
 
 ### 4.4 `/update-docs` Skill
 
 **File**: `~/.claude/skills/update-docs/SKILL.md`
 
-*[Already created in your installation]*
+**Source**: Copy from [`skills/update-docs/SKILL.md`](skills/update-docs/SKILL.md) in this directory.
 
 **Actions**:
-- research [topic] - Search web for latest patterns
-- collect [source] - Fetch from specific URL
-- analyze - Compare findings with existing docs
-- update [target] - Update documentation (with --scope flag)
-- validate - Check documentation accuracy
+- `research [topic]` — Search web for latest patterns and API changes
+- `collect [url]` — Fetch content from a specific documentation URL
+- `analyze` — Compare research findings to existing docs, identify outdated content
+- `update [target]` — Apply targeted updates to a file or scope
+- `validate` — Scan docs for stale model IDs, broken URLs, old API patterns
 
 ### 4.5 `/init-project` Skill
 
 **File**: `~/.claude/skills/init-project/SKILL.md`
 
-*[Already created in your installation]*
+**Source**: Copy from [`skills/init-project/SKILL.md`](skills/init-project/SKILL.md) in this directory.
 
 **Actions**:
-- detect - Auto-detect project type
-- fetch [language] - Fetch best practices
-- constitution - Generate language-specific constitution
-- memories - Initialize Serena memories
-- optimize - Configure optimization settings
-- --full - Run complete initialization
+- `detect` — Auto-detect tech stack (Rails, Laravel, Next.js, FastAPI, Flutter, iOS, etc.)
+- `fetch [framework]` — Fetch current best practices for the detected stack
+- `constitution` — Generate `.claude/settings/constitution.json` with architectural rules
+- `memories` — Create initial Serena memories by analyzing the codebase
+- `optimize` — Configure project-level token optimization settings
+- `--full` — Run all steps in sequence (recommended, 10-15 min)
 
 ---
 
@@ -820,39 +820,33 @@ Create 2 global system prompts that apply to all projects and agents.
 
 **File**: `~/.claude/system-prompts/global-optimization.md`
 
-*[See setup-agent.md for complete ~3K token content]*
+**Source**: Copy from [`system-prompts/global-optimization.md`](system-prompts/global-optimization.md) in this directory.
 
 **Key sections**:
-- Core optimization principles
-- Symbol-first exploration (MANDATORY)
-- Memory-first context loading (MANDATORY)
-- Prompt caching (AUTOMATIC)
-- Token-efficient tool use (AUTOMATIC)
-- Adaptive planning strategy (AUTOMATIC)
-- Model selection strategy (AUTOMATIC)
-- Pattern reuse (AUTOMATIC)
-- Enforcement rules
-- Success metrics
-- Integration with project workflows
-- Constitution enforcement
-- Continuous learning
-- Error handling
-- Token usage reporting
+- Symbol-first exploration (MANDATORY) — never read full files before symbolic discovery
+- Memory-first context loading (MANDATORY) — load Serena memories before code exploration
+- Prompt caching (AUTOMATIC) — 90% savings on re-reads of large content
+- Adaptive planning strategy (AUTOMATIC) — Unified / Intent-Planning / Planning-Only
+- Model selection strategy (AUTOMATIC) — 40% Haiku / 55% Sonnet / 5% Opus target
+- Pattern reuse (AUTOMATIC) — search existing specs and learnings before creating new code
+- Constitution enforcement — validates task against `.claude/settings/constitution.json`
+- Continuous learning — captures patterns and anti-patterns after sessions
+- Session summary template — reports token savings per task
 
 ### 5.2 Symbol-First Protocol
 
 **File**: `~/.claude/system-prompts/symbol-first-protocol.md`
 
-*[See setup-agent.md for complete ~3K token content]*
+**Source**: Copy from [`system-prompts/symbol-first-protocol.md`](system-prompts/symbol-first-protocol.md) in this directory.
 
 **Key sections**:
-- Core principle (NEVER read full file first)
-- Protocol steps (verify Serena, symbolic discovery, targeted read)
-- Common patterns (update method, add method, dependencies, refactor)
-- Advanced techniques (substring matching, filtering, pattern search)
-- Fallback strategy (when to read files)
-- Token savings examples (93%+ on bug fixes)
-- Troubleshooting guide
+- Core principle — NEVER read a full file first; always find the specific symbol
+- Step-by-step protocol — verify Serena → get overview → find symbol → targeted read
+- Common patterns — update method, add method, trace dependencies, refactor module
+- Advanced techniques — substring matching, path filtering, cross-codebase search
+- Fallback strategy — efficient `Read` + `Grep` approach when Serena is unavailable
+- Token savings table — 85-96% reduction examples for common tasks
+- Troubleshooting guide — symbol not found, wrong project, tracing definitions
 
 ---
 
@@ -864,38 +858,28 @@ Create 3 documentation files to help you understand and use the system.
 
 **File**: `~/.claude/README.md`
 
-*[See setup-agent.md or your existing installation]*
+Create this file to document your global `~/.claude/` setup for future reference.
 
-**Sections**:
+**Recommended sections**:
 - Quick start (15 min for new projects)
-- Directory structure
-- Available skills (slash commands)
-- How it works (automatic optimizations)
+- Directory structure with purpose of each file
+- Available skills (slash commands with brief descriptions)
 - Token savings breakdown
-- Integration with project workflows
 - Configuration files reference
-- Monitoring & metrics
-- Best practices (DO/DON'T)
-- Troubleshooting
-- Success stories
-- Maintenance schedule
-- Next steps
+- Monitoring & metrics commands
+- Maintenance schedule (monthly `/update-docs`, weekly `/cache-inspector analyze`)
 
 ### 6.2 Installation Summary
 
 **File**: `~/.claude/INSTALLATION-COMPLETE.md`
 
-*[See setup-agent.md or your existing installation]*
+Create this as a checklist to verify your installation is correct.
 
-**Sections**:
-- What was installed
-- Expected outcomes
-- Next steps for each project
-- Verification checklist
-- Complete file list
-- Key features enabled
-- Monitoring and improvement
-- Maintenance schedule
+**Recommended sections**:
+- What was installed (file list)
+- Expected outcomes per skill
+- Verification checklist (`ls ~/.claude/skills/*/SKILL.md`)
+- Next steps for first project activation
 
 ### 6.3 Quick Reference
 

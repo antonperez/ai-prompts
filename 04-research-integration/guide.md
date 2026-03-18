@@ -67,6 +67,8 @@ Regular research and integration:
 | **Dev communities** | Real-world usage patterns, tips |
 | **YouTube/tutorials** | Visual guides, walkthroughs |
 
+> **Full source list**: See [`sources.md`](sources.md) for an expanded, annotated list of all research sources with check frequencies, key articles, and search strategies.
+
 ---
 
 ## Research Process

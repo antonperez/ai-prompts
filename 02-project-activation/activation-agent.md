@@ -1,7 +1,7 @@
 ---
 name: project-activation-agent
 description: Automated project activation for Claude Code optimization with Serena
-model: claude-sonnet-4-5-20250929
+model: claude-sonnet-4-6
 version: 1.0.0
 ---
 

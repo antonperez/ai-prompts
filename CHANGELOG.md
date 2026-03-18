@@ -4,6 +4,38 @@ All notable changes to this library are documented here.
 
 ---
 
+## [1.7.0] — 2026-03-18
+
+### Fixed
+
+**01-global-optimization/** — resolved issue #1 (skills with no content, side notes breaking structure)
+
+- Created all 5 missing `SKILL.md` files for global skills:
+  - `skills/optimize/SKILL.md` — task complexity analysis, planning strategy selection, model routing, session metrics
+  - `skills/context/SKILL.md` — full memory lifecycle (load, save, list, refresh, inspect, clear), token savings documentation
+  - `skills/cache-inspector/SKILL.md` — cache hit rate monitoring, cost breakdown, optimization recommendations, full report action
+  - `skills/update-docs/SKILL.md` — web research + doc comparison + targeted update workflow with `--scope` flag
+  - `skills/init-project/SKILL.md` — stack detection for 8+ frameworks, constitution generation, memory creation, per-framework templates
+- Created 2 missing system prompt files (previously referenced as placeholders):
+  - `system-prompts/global-optimization.md` — all MANDATORY/AUTOMATIC optimization rules, ready to copy to `~/.claude/`
+  - `system-prompts/symbol-first-protocol.md` — complete protocol with 5 usage patterns, token savings table, fallback strategy
+- Removed circular reference in `setup-agent.md` — no longer references `*[Copy from your machine]*`; now points to actual files in repo with copy commands
+- Updated `guide.md` Steps 4–6 to replace placeholder text with real links and descriptions
+
+**README.md** — fixed section ordering (12-desktop-development now appears before 13-security-hardening)
+
+### Added
+
+**03-custom-skills/guide.md** — added `pwa.md` and global skills as examples in the Examples section
+
+**04-research-integration/guide.md** — added cross-reference to `sources.md`
+
+### Fixed
+
+**01-global-optimization/skills/init-project/SKILL.md** — fixed broken iOS link (`ios/guide.md` → `ios/ios-guide.md`)
+
+---
+
 ## [1.6.0] — 2026-03-09
 
 ### Added
