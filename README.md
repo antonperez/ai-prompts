@@ -79,7 +79,7 @@ This library contains reusable prompts for implementing global Claude Code optim
 ### [06-advanced-patterns](06-advanced-patterns/)
 **Advanced techniques for complex scenarios**
 
-- **[parallel-agents-guide.md](06-advanced-patterns/parallel-agents-guide.md)** - Multi-agent coordination via Task tool
+- **[parallel-agents-guide.md](06-advanced-patterns/parallel-agents-guide.md)** - Multi-agent coordination via Task tool + git isolation with [Worktrunk](https://worktrunk.dev/)
 - **[agent-teams-guide.md](06-advanced-patterns/agent-teams-guide.md)** - Native Agent Teams (v2.1.32+, Opus 4.6) — autonomous peer-to-peer coordination on shared codebases
 - **[checkpoint-system-guide.md](06-advanced-patterns/checkpoint-system-guide.md)** - Save/resume workflows
 - **[constitution-guide.md](06-advanced-patterns/constitution-guide.md)** - Architectural decision frameworks
@@ -445,6 +445,7 @@ git push -u origin main
 - [Claude Code Skills](https://code.claude.com/docs/en/skills) - Custom skills guide
 
 ### Related Tools
+- [Worktrunk](https://worktrunk.dev/) - Git worktree management for parallel AI agents (Apache 2.0)
 - [Codex-CLI](https://github.com/codex-cli) - Code refactoring
 - [Chrome-DevTools MCP](https://github.com/chrome-devtools-mcp) - Browser automation
 - [Sequential-Thinking](https://github.com/sequential-thinking) - Reasoning support
@@ -532,8 +533,8 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
 ---
 
 **Created**: 2026-01-04
-**Last Updated**: 2026-03-18
-**Version**: 1.7.0
+**Last Updated**: 2026-03-20
+**Version**: 1.7.1
 **Compatibility**: Claude Code v2.1.32+, Claude API (Opus 4.6: `claude-opus-4-6`, Sonnet 4.6: `claude-sonnet-4-6`, Haiku 4.5: `claude-haiku-4-5-20251001`)
 
 ---
@@ -581,6 +582,13 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
   - Three provider strategies: cloud (native tools), Claude Code (`<tool_call>` loop), Codex (MCP native)
   - System prompt architecture with domain description, user context, and tool schemas
   - Based on Agent Fleet reference implementation (streaming, optimistic UI, local agents)
+
+### v1.7.1 (2026-03-20)
+**Added**: Git isolation with Worktrunk section in `06-advanced-patterns/parallel-agents-guide.md`
+- [Worktrunk](https://worktrunk.dev/) CLI integration for running parallel Claude agents in isolated git worktrees
+- Installation guide, core commands, Claude Code parallel workflow example
+- Hooks integration and decision table (when to use worktrees vs in-process parallelism)
+- Added Worktrunk to Related Tools in README
 
 ### v1.7.0 (2026-03-18)
 **Fixed**: Critical content gaps in `01-global-optimization/` (reported in issue #1)

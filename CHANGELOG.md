@@ -4,6 +4,26 @@ All notable changes to this library are documented here.
 
 ---
 
+## [1.7.1] — 2026-03-20
+
+### Added
+
+**06-advanced-patterns/parallel-agents-guide.md** — Git isolation with Worktrunk
+
+- New section: "Git Isolation with Worktrunk" for running parallel Claude agents in isolated git worktrees
+- [Worktrunk](https://worktrunk.dev/) CLI — manages worktrees so each agent operates on a separate branch/directory
+- Installation instructions (Homebrew, Cargo, shell integration)
+- Core commands reference (`wt switch`, `wt list`, `wt merge`, `wt remove`)
+- Claude Code parallel workflow example with 3 concurrent agents
+- Hooks integration (`.worktrunk.toml` — `on-create`, `post-merge`)
+- Decision table: when to use worktrees vs in-process parallelism
+
+### Updated
+
+- `README.md` — added Worktrunk to Related Tools, updated parallel-agents-guide description, bumped to v1.7.1
+
+---
+
 ## [1.7.0] — 2026-03-18
 
 ### Fixed

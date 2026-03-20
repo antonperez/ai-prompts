@@ -704,4 +704,95 @@ Launch parallel agents:
 
 ---
 
+## Git Isolation with Worktrunk
+
+When parallel agents modify code (Pattern 2: Concurrent File Processing), they risk conflicts if working in the same directory. **[Worktrunk](https://worktrunk.dev/)** solves this by managing git worktrees — isolated working copies of your repo where each agent operates independently.
+
+### Why Worktrees for Parallel Agents
+
+The "Shared state" anti-pattern (agents modifying the same files) is the #1 reason parallel code changes fail. Git worktrees give each agent its own full working directory on a separate branch, eliminating merge conflicts during execution.
+
+### Installation
+
+```bash
+# macOS
+brew install worktrunk
+
+# Cargo (any platform)
+cargo install worktrunk
+
+# Enable shell integration (cd into worktrees)
+eval "$(wt shell-init zsh)"   # or bash/fish
+```
+
+### Core Commands
+
+| Command | Description |
+|---------|-------------|
+| `wt switch -c feature-name` | Create worktree + branch |
+| `wt switch pr:123` | Checkout a PR into a worktree |
+| `wt list` | Show all worktrees with status and age |
+| `wt merge` | Squash/rebase/merge + cleanup in one step |
+| `wt remove` | Clean up worktree and branch |
+
+### Claude Code Parallel Workflow
+
+Launch multiple Claude agents, each in its own worktree:
+
+```bash
+# Terminal 1: Agent working on auth module
+wt switch -x claude -c feat/auth-refactor
+
+# Terminal 2: Agent working on payment module
+wt switch -x claude -c feat/payment-refactor
+
+# Terminal 3: Agent working on notification module
+wt switch -x claude -c feat/notification-refactor
+```
+
+Each agent gets a fully isolated copy of the repo. No file conflicts, no lock contention, no shared state.
+
+### Merging Results
+
+After all agents complete:
+
+```bash
+# Review what each agent did
+wt list
+
+# Merge each branch back (squash + cleanup)
+wt switch feat/auth-refactor
+wt merge --squash
+
+wt switch feat/payment-refactor
+wt merge --squash
+
+wt switch feat/notification-refactor
+wt merge --squash
+```
+
+### Hooks Integration
+
+Worktrunk supports hooks for automation:
+
+```toml
+# .worktrunk.toml
+[hooks]
+on-create = "npm install"          # Setup dependencies in new worktree
+post-merge = "npm run lint"        # Validate after merge
+```
+
+### When to Use Worktrunk vs In-Process Parallelism
+
+| Scenario | Approach |
+|----------|----------|
+| Agents **read** code (analysis, review) | In-process parallel agents (no isolation needed) |
+| Agents **modify different files** | Either approach works |
+| Agents **modify overlapping files** | Worktrunk worktrees (isolation required) |
+| Long-running feature branches | Worktrunk worktrees |
+
+> **Note**: Worktrunk is free, open source (Apache 2.0), and available on macOS, Linux, and Windows. See [worktrunk.dev](https://worktrunk.dev/) for full documentation.
+
+---
+
 **Use parallel agents strategically** for complex tasks that benefit from multiple perspectives or concurrent execution. Balance the token cost against the value of parallelization.
