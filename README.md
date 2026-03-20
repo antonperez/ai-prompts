@@ -14,7 +14,7 @@ This library contains reusable prompts for implementing global Claude Code optim
 - **[guide.md](01-global-optimization/guide.md)** - Step-by-step installation guide
 - **[setup-agent.md](01-global-optimization/setup-agent.md)** - Executable agent for automated setup
 - **[checklist.md](01-global-optimization/checklist.md)** - Verification checklist
-- **[skills/](01-global-optimization/skills/)** - Complete SKILL.md files for all 5 global skills
+- **[skills/](01-global-optimization/skills/)** - Complete SKILL.md files for all 5 global skills (installed to `~/.claude/skills/`)
   - [`optimize/`](01-global-optimization/skills/optimize/SKILL.md) - `/optimize` — max token efficiency mode
   - [`context/`](01-global-optimization/skills/context/SKILL.md) - `/context` — memory management
   - [`cache-inspector/`](01-global-optimization/skills/cache-inspector/SKILL.md) - `/cache-inspector` — cache monitoring
@@ -534,7 +534,7 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
 
 **Created**: 2026-01-04
 **Last Updated**: 2026-03-20
-**Version**: 1.7.1
+**Version**: 1.8.0
 **Compatibility**: Claude Code v2.1.32+, Claude API (Opus 4.6: `claude-opus-4-6`, Sonnet 4.6: `claude-sonnet-4-6`, Haiku 4.5: `claude-haiku-4-5-20251001`)
 
 ---
@@ -582,6 +582,19 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
   - Three provider strategies: cloud (native tools), Claude Code (`<tool_call>` loop), Codex (MCP native)
   - System prompt architecture with domain description, user context, and tool schemas
   - Based on Agent Fleet reference implementation (streaming, optimistic UI, local agents)
+
+### v1.8.0 (2026-03-20)
+**Fixed**: Critical audit of `~/.claude/` setup — identified files Claude Code never reads
+- `~/.claude/system-prompts/` is NOT loaded by Claude Code — migrated content to `~/.claude/CLAUDE.md` (which IS loaded globally)
+- `~/.claude/settings/*.json` files (prompt-caching, beta-features, model-strategy, token-optimization) are reference docs only, not active config
+- Removed 13 duplicate skill copies from `~/.claude/settings/` (already in `~/.claude/skills/`)
+- Removed 15 misplaced .md files from `~/.claude/settings/` (agent/command copies)
+- Removed dead docs from `~/.claude/` root (README.md, QUICK-REFERENCE.md, INSTALLATION-COMPLETE.md)
+- Updated all model IDs: `claude-opus-4-6`, `claude-sonnet-4-6`, `claude-haiku-4-5-20251001`
+
+**Added**: Important compatibility notice in `01-global-optimization/guide.md` explaining what Claude Code actually reads from `~/.claude/`
+
+**Updated**: `CLAUDE.md` — corrected architecture description and model compatibility
 
 ### v1.7.1 (2026-03-20)
 **Added**: Git isolation with Worktrunk section in `06-advanced-patterns/parallel-agents-guide.md`

@@ -8,6 +8,26 @@ This guide walks you through setting up global Claude Code optimization that app
 
 ---
 
+> **IMPORTANT — What Claude Code Actually Reads (updated 2026-03-20)**
+>
+> Not everything placed in `~/.claude/` is automatically loaded. Only these locations are effective:
+>
+> | Location | Loaded? | Purpose |
+> |----------|---------|---------|
+> | `~/.claude/CLAUDE.md` | **YES** | Global instructions — applied to ALL projects |
+> | `~/.claude/settings.json` | **YES** | Permissions, plugins, allowed tools |
+> | `~/.claude/skills/*/SKILL.md` | **YES** | Slash commands (auto-discovered) |
+> | `~/.claude/agents/*.md` | **YES** | Agent definitions (auto-discovered) |
+> | `~/.claude/commands/*.md` | **YES** | Legacy commands (still supported, skills take precedence) |
+> | `~/.claude/system-prompts/` | **NO** | Not read by Claude Code — use `CLAUDE.md` instead |
+> | `~/.claude/settings/*.json` | **NO** | Not Claude Code config — use root `settings.json` |
+> | `~/.claude/README.md` etc. | **NO** | Not loaded — dead documentation |
+>
+> **Key action**: Put your global optimization rules in `~/.claude/CLAUDE.md`, not in `system-prompts/`.
+> The 4 JSON files in `settings/` (prompt-caching, beta-features, model-strategy, token-optimization) are reference documentation only — they do not configure Claude Code behavior. Prompt caching and model selection are handled automatically by the Anthropic API.
+
+---
+
 ## Table of Contents
 
 1. [Prerequisites](#prerequisites)

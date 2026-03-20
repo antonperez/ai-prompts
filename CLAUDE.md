@@ -10,7 +10,7 @@ This is a **documentation-only** library of reusable prompts, guides, and agent 
 
 The library follows a sequential learning path (01 through 12), where each directory is a self-contained topic:
 
-- **01-global-optimization** - One-time `~/.claude/` setup (agents, settings, skills, system prompts)
+- **01-global-optimization** - One-time `~/.claude/` setup (CLAUDE.md global instructions, agents, skills)
 - **02-project-activation** - Per-project Serena MCP activation and memory creation
 - **03-custom-skills** - Skill authoring guide + template (YAML frontmatter + Markdown body, placed in `~/.claude/skills/<name>/SKILL.md`)
 - **04-research-integration** - Keeping docs current with Claude API changes
@@ -42,8 +42,8 @@ The library follows a sequential learning path (01 through 12), where each direc
 - Each directory has a `guide.md` as its primary entry point
 - Templates use bracket placeholders: `[Description]`, `[Step 1]`
 - Token savings estimates are included in guides where applicable
-- Version history is tracked in the root `README.md` (current: v1.4.0)
-- Compatible with Claude Opus 4.6, Sonnet 4.5, Haiku 4.5
+- Version history is tracked in the root `README.md` (current: v1.8.0)
+- Compatible with Claude Opus 4.6, Sonnet 4.6, Haiku 4.5
 
 ## When Editing
 

@@ -4,6 +4,28 @@ All notable changes to this library are documented here.
 
 ---
 
+## [1.8.0] — 2026-03-20
+
+### Fixed
+
+**Critical: ~/.claude/ setup audit** — identified and fixed files Claude Code never reads
+
+- `~/.claude/system-prompts/` is NOT loaded by Claude Code — migrated global optimization rules and symbol-first protocol to `~/.claude/CLAUDE.md` (the only file Claude Code reads as global instructions)
+- `~/.claude/settings/*.json` (prompt-caching.json, beta-features.json, model-strategy.json, token-optimization.json) are reference documentation only — they do not configure Claude Code behavior
+- Removed 13 duplicate SKILL.md copies from `~/.claude/settings/` (canonical copies already in `~/.claude/skills/`)
+- Removed 15 misplaced .md files from `~/.claude/settings/` (agent/command copies that don't belong there)
+- Removed dead docs from `~/.claude/` root: README.md, QUICK-REFERENCE.md, INSTALLATION-COMPLETE.md (never loaded by Claude Code)
+- Updated all model IDs to current: `claude-opus-4-6`, `claude-sonnet-4-6`, `claude-haiku-4-5-20251001`
+
+**01-global-optimization/guide.md** — added compatibility notice table explaining what Claude Code actually reads from `~/.claude/`
+
+### Updated
+
+- `CLAUDE.md` — corrected architecture description (system prompts → CLAUDE.md), updated model compatibility to Sonnet 4.6
+- `README.md` — bumped to v1.8.0, documented audit findings
+
+---
+
 ## [1.7.1] — 2026-03-20
 
 ### Added
