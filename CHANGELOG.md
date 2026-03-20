@@ -4,6 +4,28 @@ All notable changes to this library are documented here.
 
 ---
 
+## [1.9.0] — 2026-03-20
+
+### Added
+
+**WebMCP Integration Guide** (`14-webmcp/guide.md`) — structured browser tools for AI agents
+
+- W3C Draft Community Group Report (February 2026), jointly developed by Google and Microsoft
+- `navigator.modelContext` API: `registerTool()`, `unregisterTool()`, `requestUserInteraction()`
+- WebMCP vs MCP comparison — frontend/ephemeral (browser tab) vs backend/persistent (server-side)
+- Three implementation patterns: read-only data exposure, form actions with user confirmation, declarative HTML
+- Integration workflows for Chrome MCP (`claude-in-chrome`) and Playwright MCP
+- CLAUDE.md template section for WebMCP-enabled projects
+- Browser support matrix: Chrome 146 Canary (behind flag), Edge expected, Firefox/Safari no plans
+- Current limitations: tab-bound, no discovery, spec instability, same-origin only
+- **89% token savings** vs screenshot-based agent approaches
+
+### Updated
+
+- `README.md` — added 14-webmcp section, bumped version to 1.9.0
+
+---
+
 ## [1.8.0] — 2026-03-20
 
 ### Fixed

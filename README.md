@@ -176,6 +176,22 @@ This library contains reusable prompts for implementing global Claude Code optim
 **Benefit**: Platform-specific MCP integration, build/package automation, code signing and notarization workflows
 **Setup**: 5-10 minutes per platform (MCP installation + CLAUDE.md template)
 
+### [14-webmcp](14-webmcp/)
+**WebMCP — structured browser tools for AI agents (W3C Draft, Chrome 146 Canary)**
+
+- **[guide.md](14-webmcp/guide.md)** - WebMCP integration guide
+  - What WebMCP solves (89% token savings vs screenshot-based approaches)
+  - WebMCP vs MCP comparison (frontend vs backend)
+  - `navigator.modelContext` API reference with code examples
+  - Implementation patterns (read-only, form actions, declarative HTML)
+  - Integration with Chrome MCP and Playwright MCP
+  - CLAUDE.md template for WebMCP-enabled projects
+  - Current limitations and browser support matrix
+
+**Use when**: Building web applications that AI agents will interact with
+**Benefit**: Structured tool access instead of DOM scraping; 89% token reduction
+**Status**: Early Preview — Chrome 146 Canary only, spec actively changing
+
 ---
 
 ### [13-security-hardening](13-security-hardening/)
@@ -534,12 +550,25 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
 
 **Created**: 2026-01-04
 **Last Updated**: 2026-03-20
-**Version**: 1.8.0
+**Version**: 1.9.0
 **Compatibility**: Claude Code v2.1.32+, Claude API (Opus 4.6: `claude-opus-4-6`, Sonnet 4.6: `claude-sonnet-4-6`, Haiku 4.5: `claude-haiku-4-5-20251001`)
 
 ---
 
 ## 📝 Version History
+
+### v1.9.0 (2026-03-20)
+**Added**: WebMCP Integration Guide (14-webmcp/)
+- W3C Draft Community Group Report (Google + Microsoft) — `navigator.modelContext` API
+- WebMCP vs MCP comparison (frontend/ephemeral vs backend/persistent)
+- API reference: `registerTool()`, `unregisterTool()`, `requestUserInteraction()`
+- Implementation patterns: read-only data, form actions with confirmation, declarative HTML
+- Integration guide for Chrome MCP and Playwright MCP workflows
+- CLAUDE.md template for WebMCP-enabled projects
+- Browser support matrix and current limitations
+- 89% token savings vs screenshot-based approaches
+
+**Updated**: README.md — added 14-webmcp section, bumped to v1.9.0
 
 ### v1.6.0 (2026-03-09)
 **Added**: Security Hardening Section (13-security-hardening/)

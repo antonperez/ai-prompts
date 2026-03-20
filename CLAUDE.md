@@ -8,7 +8,7 @@ This is a **documentation-only** library of reusable prompts, guides, and agent 
 
 ## Architecture
 
-The library follows a sequential learning path (01 through 12), where each directory is a self-contained topic:
+The library follows a sequential learning path (01 through 14), where each directory is a self-contained topic:
 
 - **01-global-optimization** - One-time `~/.claude/` setup (CLAUDE.md global instructions, agents, skills)
 - **02-project-activation** - Per-project Serena MCP activation and memory creation
@@ -23,6 +23,7 @@ The library follows a sequential learning path (01 through 12), where each direc
 - **11-mobile-development** - iOS, Android, React Native, Flutter guides with MCP servers, subagents, CLAUDE.md templates, and cross-platform skills
 - **12-desktop-development** - macOS, Tauri, Electron guides with MCP servers, subagents, CLAUDE.md templates, and cross-platform skills
 - **13-security-hardening** - MCP CVEs, vetting checklists, prompt injection defense hooks, production safety rules, permissions.deny templates
+- **14-webmcp** - WebMCP (W3C Draft) integration guide: navigator.modelContext API, browser tool registration, Chrome/Playwright MCP integration
 
 ## Key Patterns
 
@@ -42,7 +43,7 @@ The library follows a sequential learning path (01 through 12), where each direc
 - Each directory has a `guide.md` as its primary entry point
 - Templates use bracket placeholders: `[Description]`, `[Step 1]`
 - Token savings estimates are included in guides where applicable
-- Version history is tracked in the root `README.md` (current: v1.8.0)
+- Version history is tracked in the root `README.md` (current: v1.9.0)
 - Compatible with Claude Opus 4.6, Sonnet 4.6, Haiku 4.5
 
 ## When Editing
