@@ -21,6 +21,7 @@ cp *.md ~/.claude/commands/
 | `/refactor` | Refactoring Agent | Safe refactoring, impact analysis, incremental changes |
 | `/perf` | Performance Agent | Profiling, bottleneck analysis, optimization |
 | `/i18n` | Internationalization | String extraction, translation validation, locale sync |
+| `/content-review` | Content Audit | Technical accuracy, consistency, grammar, translations |
 
 ## Usage Examples
 
@@ -52,6 +53,12 @@ cp *.md ~/.claude/commands/
 # Internationalization
 /i18n scan                      # Find hardcoded strings
 /i18n validate --missing        # Check translation coverage
+
+# Content Review
+/content-review                 # Full content audit
+/content-review ui              # UI-facing content only
+/content-review docs            # Documentation only
+/content-review errors          # Error messages and validation text
 ```
 
 ## Command Structure

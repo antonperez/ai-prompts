@@ -94,8 +94,9 @@ This library contains reusable prompts for implementing global Claude Code optim
 - **[debug.md](07-custom-commands/debug.md)** - Debug Agent for systematic debugging
 - **[i18n.md](07-custom-commands/i18n.md)** - Internationalization management
 - **[qa.md](07-custom-commands/qa.md)** - QA automation with browser testing
+- **[content-review.md](07-custom-commands/content-review.md)** - Content audit for accuracy, consistency, grammar, and translations
 
-**Use when**: Specialized workflows, testing, debugging
+**Use when**: Specialized workflows, testing, debugging, content quality assurance
 **Benefit**: Encapsulate complex workflows into simple commands
 
 ### [08-ui-ux-development](08-ui-ux-development/)
@@ -549,13 +550,19 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
 ---
 
 **Created**: 2026-01-04
-**Last Updated**: 2026-03-20
-**Version**: 1.9.0
+**Last Updated**: 2026-03-21
+**Version**: 1.10.0
 **Compatibility**: Claude Code v2.1.32+, Claude API (Opus 4.6: `claude-opus-4-6`, Sonnet 4.6: `claude-sonnet-4-6`, Haiku 4.5: `claude-haiku-4-5-20251001`)
 
 ---
 
 ## 📝 Version History
+
+### v1.10.0 (2026-03-21)
+**Added**: `/content-review` skill (07-custom-commands/content-review.md)
+- Content audit for documentation, UI copy, error messages, and translation files
+- Scope filtering (docs/ui/errors/api), multilingual checks (Bulgarian/English), structured report output
+- Based on production audits of Zonex/Signalio (23+ issues found and fixed)
 
 ### v1.9.0 (2026-03-20)
 **Added**: WebMCP Integration Guide (14-webmcp/)

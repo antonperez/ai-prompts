@@ -4,6 +4,28 @@ All notable changes to this library are documented here.
 
 ---
 
+## [1.10.0] — 2026-03-21
+
+### Added
+
+**07-custom-commands/content-review.md** — `/content-review` skill for auditing user-facing content
+
+- Comprehensive content audit: documentation, UI copy, error messages, translations
+- Scope filtering: `docs`, `ui`, `errors`, `api`, or full audit (default)
+- Technical accuracy checks against codebase (models, routes, config)
+- Consistency audit: terminology, capitalization, duplicate PHP array keys
+- Language-specific checks: Bulgarian sentence case, comma rules, Latin/Cyrillic mixing, formal register
+- Structured report output: Critical/High/Medium categories with file:line references
+- Quality checklist for all content types (labels, errors, placeholders, buttons, docs)
+- Based on production audits of Zonex/Signalio translation files (23+ issues found and fixed)
+
+### Updated
+
+- `README.md` — added content-review to 07-custom-commands listing, bumped to v1.10.0
+- `CHANGELOG.md` — documented v1.10.0 changes
+
+---
+
 ## [1.9.0] — 2026-03-20
 
 ### Added
