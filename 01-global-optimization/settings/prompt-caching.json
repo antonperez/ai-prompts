@@ -1,0 +1,26 @@
+{
+  "_comment": "REFERENCE ONLY — this file does not configure Claude Code behavior. Prompt caching is automatic via the Anthropic API. This documents caching intent for the optimization-agent to inspect.",
+  "cache_control": {
+    "type": "ephemeral",
+    "auto_enable": true
+  },
+  "caching_rules": {
+    "system_prompts": {
+      "enabled": true,
+      "min_tokens": 1024,
+      "note": "CLAUDE.md and system context — cached automatically"
+    },
+    "tool_definitions": {
+      "enabled": true,
+      "min_tokens": 1024,
+      "note": "MCP tool schemas (Serena, etc.) — cached automatically"
+    },
+    "memories": {
+      "enabled": true,
+      "min_tokens": 1024,
+      "note": "Serena memory files — ensure each is >1024 tokens for cache eligibility"
+    }
+  },
+  "ttl_minutes": 60,
+  "status": "active"
+}

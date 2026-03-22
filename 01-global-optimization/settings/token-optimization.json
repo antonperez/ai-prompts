@@ -1,0 +1,49 @@
+{
+  "_comment": "REFERENCE ONLY — this file does not configure Claude Code behavior. It documents the optimization configuration that should be active via CLAUDE.md instructions and Serena setup.",
+  "optimizations": {
+    "symbol_first_exploration": {
+      "enabled": true,
+      "savings": "65-75%",
+      "requires": "Serena MCP",
+      "rule": "Always use mcp__serena__ tools before Read tool for code files"
+    },
+    "memory_system": {
+      "enabled": true,
+      "savings": "60-70%",
+      "requires": "Serena MCP",
+      "core_memories": [
+        "architecture.md",
+        "codebase-conventions.md",
+        "module-structure.md",
+        "testing-strategy.md"
+      ],
+      "rule": "Load memories at session start before any file exploration"
+    },
+    "prompt_caching": {
+      "enabled": true,
+      "savings": "90% on cached reads",
+      "min_tokens_to_cache": 1024,
+      "rule": "Automatic — no action required beyond having content >= 1024 tokens"
+    },
+    "adaptive_planning": {
+      "enabled": true,
+      "savings": "40-50%",
+      "strategies": {
+        "unified": { "subtasks": "1-2", "use_for": "Bug fixes, single-file changes" },
+        "intent_planning": { "subtasks": "3-7", "use_for": "Features, moderate refactoring" },
+        "planning_only": { "subtasks": "8+", "use_for": "New modules, architectural changes" }
+      }
+    },
+    "pattern_reuse": {
+      "enabled": true,
+      "savings": "50%",
+      "rule": "Search for existing patterns before generating new code"
+    }
+  },
+  "targets": {
+    "cache_hit_rate": "80%+",
+    "token_reduction": "60-75%",
+    "haiku_usage": "40% of tasks",
+    "blended_cost_per_mtok": "$1.50"
+  }
+}

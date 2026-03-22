@@ -282,17 +282,17 @@ Use these baselines to compare your performance:
 
 | Model | Target % | Actual % | Status |
 |-------|----------|----------|--------|
-| Haiku | 40% | ? | ? |
-| Sonnet | 55% | ? | ? |
-| Opus | 5% | ? | ? |
+| Haiku 4.5 | 40% | ? | ? |
+| Sonnet 4.6 | 55% | ? | ? |
+| Opus 4.6 | 5% | ? | ? |
 
 ### Cost Efficiency
 
-| Scenario | Average Cost/1M | Status |
+| Scenario | Average Input Cost/1M | Status |
 |----------|-----------------|--------|
-| All Sonnet | $3.00 | Baseline |
-| All Haiku | $1.00 | Minimum |
-| Optimized mix | $1.70 | Target |
+| All Sonnet 4.6 | $3.00 | Baseline |
+| All Haiku 4.5 | $0.80 | Minimum |
+| Optimized mix | ~$1.50 | Target |
 | Your actual | $? | ? |
 
 ---

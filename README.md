@@ -20,6 +20,11 @@ This library contains reusable prompts for implementing global Claude Code optim
   - [`cache-inspector/`](01-global-optimization/skills/cache-inspector/SKILL.md) - `/cache-inspector` — cache monitoring
   - [`update-docs/`](01-global-optimization/skills/update-docs/SKILL.md) - `/update-docs` — documentation refresh
   - [`init-project/`](01-global-optimization/skills/init-project/SKILL.md) - `/init-project` — new project setup
+- **[settings/](01-global-optimization/settings/)** - Reference configuration templates (copy to `~/.claude/settings/`)
+  - [`prompt-caching.json`](01-global-optimization/settings/prompt-caching.json) - Cache control settings
+  - [`beta-features.json`](01-global-optimization/settings/beta-features.json) - Beta feature flags
+  - [`model-strategy.json`](01-global-optimization/settings/model-strategy.json) - Model selection strategy with current pricing
+  - [`token-optimization.json`](01-global-optimization/settings/token-optimization.json) - Optimization targets and rules
 - **[system-prompts/](01-global-optimization/system-prompts/)** - Global system prompt files
   - [`global-optimization.md`](01-global-optimization/system-prompts/global-optimization.md) - Core optimization rules
   - [`symbol-first-protocol.md`](01-global-optimization/system-prompts/symbol-first-protocol.md) - Symbol-first exploration protocol
@@ -69,11 +74,12 @@ This library contains reusable prompts for implementing global Claude Code optim
 ### [05-token-optimization](05-token-optimization/)
 **Deep dive into token reduction techniques**
 
-- **[guide.md](05-token-optimization/guide.md)** - Complete optimization guide
-- **[optimization-agent.md](05-token-optimization/optimization-agent.md)** - Token usage analyzer
-- **[metrics.md](05-token-optimization/metrics.md)** - Measurement and tracking
+- **[guide.md](05-token-optimization/guide.md)** - Complete optimization guide with current model pricing (Opus 4.6, Sonnet 4.6, Haiku 4.5)
+- **[checklist.md](05-token-optimization/checklist.md)** - Quick verification checklist for all optimization layers
+- **[optimization-agent.md](05-token-optimization/optimization-agent.md)** - Token usage analyzer and personalized recommendation generator
+- **[metrics.md](05-token-optimization/metrics.md)** - Measurement frameworks, tracking templates, and baseline benchmarks
 
-**Use when**: Analyzing token usage, optimizing specific workflows
+**Use when**: Analyzing token usage, optimizing specific workflows, diagnosing low savings
 **Benefit**: Understand and maximize savings, track ROI
 
 ### [06-advanced-patterns](06-advanced-patterns/)
@@ -550,13 +556,21 @@ These prompts are project-agnostic and can be freely shared, modified, and adapt
 ---
 
 **Created**: 2026-01-04
-**Last Updated**: 2026-03-21
-**Version**: 1.10.0
+**Last Updated**: 2026-03-23
+**Version**: 1.11.0
 **Compatibility**: Claude Code v2.1.32+, Claude API (Opus 4.6: `claude-opus-4-6`, Sonnet 4.6: `claude-sonnet-4-6`, Haiku 4.5: `claude-haiku-4-5-20251001`)
 
 ---
 
 ## 📝 Version History
+
+### v1.11.0 (2026-03-23)
+**Implemented**: 05-token-optimization — complete with current pricing and missing files
+- `05-token-optimization/checklist.md` — new quick-reference verification checklist (foundation, per-project, per-session, habits)
+- `01-global-optimization/settings/` — 4 reference JSON config templates now present in repo: `prompt-caching.json`, `beta-features.json`, `model-strategy.json`, `token-optimization.json`
+- Updated `05-token-optimization/guide.md` pricing to current models: Opus 4.6 ($15/$75), Sonnet 4.6 ($3/$15), Haiku 4.5 ($0.80/$4)
+- Updated model names throughout `guide.md`, `metrics.md`, `optimization-agent.md`
+- README updated to list checklist and settings files
 
 ### v1.10.0 (2026-03-21)
 **Added**: `/content-review` skill (07-custom-commands/content-review.md)

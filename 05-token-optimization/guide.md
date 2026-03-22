@@ -41,9 +41,9 @@ Tokens are the units Claude uses to process text:
 
 | Model | Input | Output | Cache Read |
 |-------|-------|--------|------------|
-| Opus 4.5 | $5.00 | $25.00 | $0.50 (90% off) |
-| Sonnet 4.5 | $3.00 | $15.00 | $0.30 (90% off) |
-| Haiku 4.5 | $1.00 | $5.00 | $0.10 (90% off) |
+| Opus 4.6 (`claude-opus-4-6`) | $15.00 | $75.00 | $1.50 (90% off) |
+| Sonnet 4.6 (`claude-sonnet-4-6`) | $3.00 | $15.00 | $0.30 (90% off) |
+| Haiku 4.5 (`claude-haiku-4-5`) | $0.80 | $4.00 | $0.08 (90% off) |
 
 ### Why Token Optimization Matters
 
@@ -201,11 +201,11 @@ Beta header: token-efficient-tools-2025-02-19
 - Reserve expensive models for complex decisions
 
 **Strategy**:
-| Task Type | Model | Cost/1M | Use Case |
+| Task Type | Model | Cost/1M (in/out) | Use Case |
 |-----------|-------|---------|----------|
-| Fast operations | Haiku | $1/$5 | Requirements, tasks, simple queries |
-| Balanced work | Sonnet | $3/$15 | Design, implementation, testing |
-| Critical decisions | Opus | $5/$25 | Judge evaluation, complex architecture |
+| Fast operations | Haiku 4.5 | $0.80/$4 | Requirements, tasks, simple queries |
+| Balanced work | Sonnet 4.6 | $3/$15 | Design, implementation, testing |
+| Critical decisions | Opus 4.6 | $15/$75 | Judge evaluation, complex architecture |
 
 **Target distribution**:
 - Haiku: 40% of tasks
@@ -213,9 +213,9 @@ Beta header: token-efficient-tools-2025-02-19
 - Opus: 5% of tasks
 
 **Cost impact**:
-- All Sonnet: $3/M average
-- Optimized mix: $1.70/M average
-- **Savings**: 43%
+- All Sonnet: $3/M average input cost
+- Optimized mix: ~$1.50/M average input cost
+- **Savings**: ~50%
 
 ---
 

@@ -1,0 +1,18 @@
+{
+  "_comment": "REFERENCE ONLY — this file does not configure Claude Code behavior. Beta features are enabled via API headers. This documents which features are intended to be active.",
+  "token_efficient_tools": {
+    "enabled": true,
+    "header": "token-efficient-tools-2025-02-19",
+    "savings": "14-70% on tool output tokens",
+    "note": "Enabled automatically in Claude Code when beta header is present"
+  },
+  "prompt_caching": {
+    "enabled": true,
+    "savings": "90% on repeated content reads",
+    "note": "Enabled by default in Claude Code"
+  },
+  "extended_thinking": {
+    "enabled": false,
+    "note": "Only enable for complex multi-step reasoning tasks — high token cost"
+  }
+}

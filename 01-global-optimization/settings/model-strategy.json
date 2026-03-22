@@ -1,0 +1,49 @@
+{
+  "_comment": "REFERENCE ONLY — this file does not configure Claude Code behavior. Model selection is made per-task by the orchestrator. This documents the intended strategy.",
+  "models": {
+    "haiku": {
+      "id": "claude-haiku-4-5-20251001",
+      "short_id": "claude-haiku-4-5",
+      "input_cost_per_mtok": 0.80,
+      "output_cost_per_mtok": 4.00,
+      "cache_read_per_mtok": 0.08,
+      "use_for": [
+        "Requirements gathering",
+        "Task decomposition",
+        "Simple formatting",
+        "Repetitive generation",
+        "Quick lookups"
+      ],
+      "target_percentage": 40
+    },
+    "sonnet": {
+      "id": "claude-sonnet-4-6",
+      "input_cost_per_mtok": 3.00,
+      "output_cost_per_mtok": 15.00,
+      "cache_read_per_mtok": 0.30,
+      "use_for": [
+        "Implementation",
+        "Design decisions",
+        "Testing",
+        "Orchestration",
+        "Most coding tasks"
+      ],
+      "target_percentage": 55
+    },
+    "opus": {
+      "id": "claude-opus-4-6",
+      "input_cost_per_mtok": 15.00,
+      "output_cost_per_mtok": 75.00,
+      "cache_read_per_mtok": 1.50,
+      "use_for": [
+        "Security reviews",
+        "Architectural decisions",
+        "Judge evaluation (3+ options)",
+        "Critical irreversible decisions"
+      ],
+      "target_percentage": 5
+    }
+  },
+  "target_blended_input_cost_per_mtok": 1.50,
+  "note": "Never use Opus for routine implementation regardless of complexity. Complexity alone does not justify Opus — only criticality and irreversibility do."
+}

@@ -100,9 +100,9 @@ mcp__serena__list_memories
 | Setting | Status | Impact if Missing |
 |---------|--------|-------------------|
 | Prompt caching | ? | Missing 90% savings on repeated content |
-| Token-efficient tools | ? | Missing 14-70% on tool outputs |
-| Model strategy | ? | Overpaying for simple tasks |
-| Memories | ? | Re-reading files every session |
+| Token-efficient tools beta header | ? | Missing 14-70% on tool outputs |
+| Model strategy (Haiku 4.5 / Sonnet 4.6 / Opus 4.6) | ? | Overpaying for simple tasks |
+| Serena memories | ? | Re-reading files every session |
 
 ---
 
