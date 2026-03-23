@@ -1,0 +1,76 @@
+{
+  "version": "1.0.0",
+  "project": "ai-prompts",
+  "type": "documentation-library",
+  "description": "Reusable prompts, guides, and agent definitions for Claude Code optimization",
+  "principles": [
+    {
+      "id": "no-renumbering",
+      "rule": "Never renumber existing directories. The 01-14 numbering is stable and referenced externally.",
+      "enforcement": "mandatory"
+    },
+    {
+      "id": "no-code",
+      "rule": "Do not add executable code files (JS, Python, Ruby, etc.). This is a documentation-only library.",
+      "enforcement": "mandatory"
+    },
+    {
+      "id": "guide-as-entry-point",
+      "rule": "Each directory must have a guide.md as its primary entry point.",
+      "enforcement": "mandatory"
+    },
+    {
+      "id": "yaml-frontmatter-preservation",
+      "rule": "Preserve all existing YAML frontmatter fields in skill files and subagent definitions. Do not add or remove fields without intent.",
+      "enforcement": "mandatory"
+    },
+    {
+      "id": "bracket-placeholders",
+      "rule": "Template placeholders must use square bracket format: [Description], [Step 1]. Never use {{ }}, < >, or other formats.",
+      "enforcement": "mandatory"
+    },
+    {
+      "id": "heading-hierarchy",
+      "rule": "Maintain the existing Markdown heading hierarchy (H1 → H2 → H3). Do not skip levels.",
+      "enforcement": "mandatory"
+    },
+    {
+      "id": "version-tracking",
+      "rule": "Update the version header and changelog section in README.md when adding new sections or making significant changes to existing ones.",
+      "enforcement": "mandatory"
+    },
+    {
+      "id": "cross-references",
+      "rule": "When adding new content, cross-reference related guides using relative Markdown links.",
+      "enforcement": "recommended"
+    },
+    {
+      "id": "token-savings-estimates",
+      "rule": "Include token savings estimates in guides where applicable (e.g., 'Token savings: 60-70%').",
+      "enforcement": "recommended"
+    },
+    {
+      "id": "no-duplicate-dirs",
+      "rule": "Do not create directories with ' 2' suffix duplicates. Existing ones (05-token-optimization 2, etc.) are legacy artifacts.",
+      "enforcement": "mandatory"
+    },
+    {
+      "id": "no-emoji-drift",
+      "rule": "Do not add emoji to files that do not already use them. Match the existing style of each file.",
+      "enforcement": "recommended"
+    },
+    {
+      "id": "compatibility-notes",
+      "rule": "Note version compatibility where relevant (e.g., 'Compatible with Claude Opus 4.6, Sonnet 4.6, Haiku 4.5', 'v2.1.32+').",
+      "enforcement": "recommended"
+    }
+  ],
+  "structure": {
+    "directory_naming": "zero-padded-number-kebab-case",
+    "primary_file": "guide.md",
+    "agent_file_pattern": "*-agent.md",
+    "skill_file": "SKILL.md",
+    "version_file": "README.md"
+  },
+  "created": "2026-03-23"
+}
